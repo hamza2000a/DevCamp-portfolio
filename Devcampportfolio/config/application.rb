@@ -25,4 +25,5 @@ module Devcampportfolio
         g.stylesheets     false
         g.javascripts     true 
     end
- end
+  end
+end
