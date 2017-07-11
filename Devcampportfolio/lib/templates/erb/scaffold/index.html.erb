@@ -1,24 +1,22 @@
-<p id="notice"><%%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<h2><%= plural_table_name.titleize %></h2>
+<h1>Blogs</h1>
 
-<hr>
+<table>
+  <thead>
+    <tr>
+      <th>Blog Title</th>
+      <th>Date</th>
+      <th>Body</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
 
-
-  <div>
-   <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-   <div class="content">
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
- <p><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
-<% end -%>
- <p><%%= link_to 'Show', <%= singular_table_name %> %></td>
-  <p><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
-   <p><%%= link_to 'Delete', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-   </div>
-  <%% end %>
-  </div>
-
+  <tbody>
+    <%= render @blogs %>
+  </tbody>
+</table>
 
 <br>
 
-<%%= link_to 'Create a New <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path %>
+<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
